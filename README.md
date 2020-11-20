@@ -15,16 +15,43 @@ The application itself contains of four microservices (see drawing below). The l
 
 ![drawing](https://github.com/hakktastic/lease-a-car-api/blob/main/Drawing.jpg) 
 
+##### Application Url's
+
+Service | Url:port | H2 Console
+------------ | ------------- | -------------
+lease-calculation-service | http://localhost:8080
+customer-service | http://localhost:8081 | http://localhost:8083/h2-console
+car-service | http://localhost:8082 | http://localhost:8083/h2-console
+interest-rate-calculation-service | http://localhost:8083 | http://localhost:8083/h2-console
+
 ##### Technologies
-TO DO
-##### Status
-TO DO
+The technologies used for developing this application are as follows:
 
-##### To do
-TO DO
+* Java
+* Spring Boot:
+  * Spring Web
+  * Spring Data JPA
+  * Spring Boot Devtools
+  * Spring Boot Actuator
+  * Spring Cloud OpenFeign
+  * H2 Database
+* Maven, JUnit & Mockito
+* Eclipse, Postman
+* Web Browser
 
-### Development
-TO DO
+##### Development
+The upcoming period, while completing the second I will be working on the Spring Cloud elements like: 
+
+* Spring Security > how do I secure Rest calls?
+* Swagger
+* Spring Cloud Config Server
+* Ribbon
+* Eureka
+* Zuul
+* RabbitMQ
+* Zipkin
+* Spring Cloud Bus
+* Hystrix
 
 ### Setup
 TO DO
