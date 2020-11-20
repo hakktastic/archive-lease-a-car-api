@@ -43,15 +43,15 @@ The technologies used for developing this application are as follows:
 The upcoming period, while completing the second course I will be working on the Spring Cloud elements like: 
 
 * Spring Security > how do I secure Rest calls?
-* Swagger
-* Spring Cloud Config Server
-* Ribbon
-* Eureka
-* Zuul
-* RabbitMQ
-* Zipkin
-* Spring Cloud Bus
-* Hystrix
+* Swagger > Document Rest services
+* Spring Cloud Config Server > Manage application properties centralized
+* Netflix Ribbon > Load balancing
+* Netflix Eureka > Naming Server
+* Netflix Zuul > API Gateway
+* RabbitMQ > Messaging Broker
+* Zipkin > Tracing
+* Spring Cloud Bus > Dynamic configuration changing
+* Netflix Hystrix > Manage failures and fallbacks
 
 ### Setup
 In order to run this application within you favourite IDE:
