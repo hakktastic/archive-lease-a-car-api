@@ -2,6 +2,7 @@ package nl.svb.leaseacarapi.leasecalculationservice.proxy;
 
 import java.util.Optional;
 import nl.svb.leaseacarapi.leasecalculationservice.bean.InterestRateBean;
+import org.springframework.cloud.netflix.ribbon.RibbonClient;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,7 +13,8 @@ import org.springframework.web.bind.annotation.PathVariable;
  * @author HAKKI CABUK
  *
  */
-@FeignClient(name = "interest-rate-calculation-service", url = "http://localhost:8083")
+@FeignClient(name = "interest-rate-calculation-service")
+@RibbonClient(name = "interest-rate-calculation-service")
 public interface InterestRateServiceProxy {
 
   /**

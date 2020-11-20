@@ -2,14 +2,14 @@ package nl.svb.leaseacarapi.leasecalculationservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 
+@EnableEurekaServer
 @SpringBootApplication
-@EnableDiscoveryClient
-public class CarServiceApplication {
+public class NetflixEurekaNamingServerApplication {
 
   public static void main(String[] args) {
-    SpringApplication.run(CarServiceApplication.class, args);
+    SpringApplication.run(NetflixEurekaNamingServerApplication.class, args);
   }
 
 }

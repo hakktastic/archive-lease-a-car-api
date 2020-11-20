@@ -2,14 +2,14 @@ package nl.svb.leaseacarapi.leasecalculationservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.config.server.EnableConfigServer;
 
 @SpringBootApplication
-@EnableDiscoveryClient
-public class CarServiceApplication {
+@EnableConfigServer
+public class SpringCloudConfigServerApplication {
 
   public static void main(String[] args) {
-    SpringApplication.run(CarServiceApplication.class, args);
+    SpringApplication.run(SpringCloudConfigServerApplication.class, args);
   }
 
 }

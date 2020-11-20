@@ -5,6 +5,7 @@ import java.util.Optional;
 import nl.svb.leaseacarapi.leasecalculationservice.entity.Customer;
 import nl.svb.leaseacarapi.leasecalculationservice.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -25,6 +26,11 @@ public class CustomerController {
 
   @Autowired
   private CustomerRepository repository;
+
+  // This is for debugging purposes of Ribbon.
+  // FIXME delete this code after implementation
+  @Autowired
+  Environment environment;
 
   /**
    * Create Customer.
@@ -83,6 +89,10 @@ public class CustomerController {
    */
   @GetMapping("/customers/{id}")
   public ResponseEntity<?> getCustomerById(@PathVariable int id) {
+
+    // This is for debugging purposes of Ribbon.
+    // FIXME delete this code after implementation
+    System.out.println("CUSTOMER SERVICE PORT -->" + environment.getProperty("local.server.port"));
 
     final Optional<Customer> optionalCustomerEntity = repository.findById(id);
 

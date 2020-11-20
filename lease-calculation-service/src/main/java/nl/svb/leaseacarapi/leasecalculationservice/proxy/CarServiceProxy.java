@@ -2,6 +2,7 @@ package nl.svb.leaseacarapi.leasecalculationservice.proxy;
 
 import java.util.Optional;
 import nl.svb.leaseacarapi.leasecalculationservice.bean.CarBean;
+import org.springframework.cloud.netflix.ribbon.RibbonClient;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,7 +14,8 @@ import org.springframework.web.bind.annotation.PathVariable;
  * @author HAKKI CABUK
  *
  */
-@FeignClient(name = "car-service", url = "http://localhost:8082")
+@FeignClient(name = "car-service")
+@RibbonClient(name = "car-service")
 public interface CarServiceProxy {
 
   /**
