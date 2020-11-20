@@ -40,7 +40,7 @@ The technologies used for developing this application are as follows:
 * Web Browser
 
 ### Development
-The upcoming period, while completing the second I will be working on the Spring Cloud elements like: 
+The upcoming period, while completing the second course I will be working on the Spring Cloud elements like: 
 
 * Spring Security > how do I secure Rest calls?
 * Swagger
