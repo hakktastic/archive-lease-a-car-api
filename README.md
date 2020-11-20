@@ -39,7 +39,7 @@ The technologies used for developing this application are as follows:
 * Eclipse, Postman
 * Web Browser
 
-##### Development
+### Development
 The upcoming period, while completing the second I will be working on the Spring Cloud elements like: 
 
 * Spring Security > how do I secure Rest calls?
@@ -54,7 +54,13 @@ The upcoming period, while completing the second I will be working on the Spring
 * Hystrix
 
 ### Setup
-TO DO
+In order to run this application within you favourite IDE:
 
-### Service URL's
-TO DO
+* Checkout this repository from my Github
+* Import the projects with Maven
+* Install the Maven dependencies
+* Build the projects
+* Run the applications as Java- or Spring Boot application 
+
+*Startup the lease-calculation service last because it will need the other services for the calculation.*
+
