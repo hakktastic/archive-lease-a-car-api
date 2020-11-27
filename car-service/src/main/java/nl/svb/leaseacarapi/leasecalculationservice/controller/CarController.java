@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 import nl.svb.leaseacarapi.leasecalculationservice.entity.Car;
 import nl.svb.leaseacarapi.leasecalculationservice.repository.CarRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,6 +27,8 @@ public class CarController {
 
   @Autowired
   private CarRepository repository;
+
+  private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
   /**
    * Create Car Entity.
@@ -62,17 +66,22 @@ public class CarController {
   @GetMapping("/cars/{id}")
   public ResponseEntity<?> getCar(@PathVariable int id) {
 
+    final ResponseEntity<Car> responseEntity;
     final Optional<Car> optionalCarEntity = repository.findById(id);
 
     if (optionalCarEntity.isPresent()) {
 
-      return new ResponseEntity<>(optionalCarEntity.get(), HttpStatus.OK);
+      responseEntity = new ResponseEntity<>(optionalCarEntity.get(), HttpStatus.OK);
+
+      logger.info("Get Customer by ID --> Response Code -> {} - Response -> {} ",
+          responseEntity.getStatusCodeValue(), responseEntity.getBody());
 
     } else {
 
-      return new ResponseEntity<>("Car Entity not found for provided ID -> " + id,
-          HttpStatus.NO_CONTENT);
+      responseEntity = new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
     }
+
+    return responseEntity;
   }
 
   /**

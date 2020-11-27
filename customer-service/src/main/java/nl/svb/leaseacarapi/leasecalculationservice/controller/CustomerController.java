@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 import nl.svb.leaseacarapi.leasecalculationservice.entity.Customer;
 import nl.svb.leaseacarapi.leasecalculationservice.repository.CustomerRepository;
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
@@ -31,6 +32,8 @@ public class CustomerController {
   // FIXME delete this code after implementation
   @Autowired
   Environment environment;
+
+  private final Logger logger = org.slf4j.LoggerFactory.getLogger(this.getClass());
 
   /**
    * Create Customer.
@@ -94,16 +97,22 @@ public class CustomerController {
     // FIXME delete this code after implementation
     System.out.println("CUSTOMER SERVICE PORT -->" + environment.getProperty("local.server.port"));
 
+    final ResponseEntity<Customer> responseEntity;
     final Optional<Customer> optionalCustomerEntity = repository.findById(id);
 
     if (optionalCustomerEntity.isPresent()) {
 
-      return new ResponseEntity<>(optionalCustomerEntity.get(), HttpStatus.OK);
+      responseEntity = new ResponseEntity<>(optionalCustomerEntity.get(), HttpStatus.OK);
+
+      logger.info("Get Customer by ID --> Response Code -> {} - Response -> {} ",
+          responseEntity.getStatusCodeValue(), responseEntity.getBody());
+
     } else {
 
-      return new ResponseEntity<>("Customer Entity not found for provided ID -> " + id,
-          HttpStatus.NO_CONTENT);
+      responseEntity = new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
+    return responseEntity;
   }
 
   /**

@@ -25,7 +25,9 @@ lease-calculation-service | http://localhost:8080
 customer-service | http://localhost:8081 | http://localhost:8083/h2-console
 car-service | http://localhost:8082 | http://localhost:8082/h2-console
 interest-rate-calculation-service | http://localhost:8083 | http://localhost:8083/h2-console
-Eureka Naming Server | http://localhost:8761 | -
+Netflix Eureka Naming Server | http://localhost:8761 | -
+Netflix Zuul Api Gateway Server | http://localhost:8765 | -
+Zipkin  | http://localhost:9411/zipkin/ | -
 Spring Cloud Config Server | http://localhost:8888
 
 ##### Technologies
@@ -39,7 +41,12 @@ The technologies used for developing this application are as follows:
   * Spring Boot Actuator
   * Spring Cloud OpenFeign
   * Spring Cloud Config Server
-  * Netflix Ribbon (load balancer) & Eureka (naming server)
+  * Spring Cloud Sleuth
+  * Netflix Ribbon Load Balancer
+  * Netflix Eureka Naming Server
+  * Netflix Zuul API Gateway Server
+  * MQRabbit
+  * Zipkin Tracing Server
   * H2 Database
 * Maven, JUnit & Mockito
 * Eclipse, Postman
@@ -50,14 +57,9 @@ The upcoming period, while completing the second course I will be working on the
 
 * Spring Security > how do I secure Rest calls?
 * Swagger > Document Rest services
-* Netflix Zuul > API Gateway
-* RabbitMQ > Messaging Broker
-* Zipkin > Tracing
 * Spring Cloud Bus > Dynamic configuration changing
 * Netflix Hystrix > Manage failures and fallbacks
-
-### TODOLO
-* Replace Netflix Ribbon load balancer with Spring Cloud Load Balancer
+* Instead of Netflix Ribbon load balancer try use Spring Cloud Load Balancer
 
 ### Setup
 In order to run this application within you favourite IDE:
@@ -66,6 +68,13 @@ In order to run this application within you favourite IDE:
 * Import the projects with Maven
 * Install the Maven dependencies
 * Build the projects
+* Download and Install latest version of ![RabbitMQ](https://www.rabbitmq.com/download.html)
+	* A prerequisite for RabbitMQ is the installation of Erlang libraries
+	* Download and install the libraries of Erlang: ![Erlang OTP](https://www.erlang.org/downloads)
+* Download ![Zipkin Tracing Server](https://search.maven.org/remote_content?g=io.zipkin&a=zipkin-server&v=LATEST&c=exec) (executable jar)
 * Run the applications as Java- or Spring Boot application 
-
-*Startup the lease-calculation service last because it will need the other services for the calculation.*
+	* Start the Eureka Naming Server
+	* Start the micros services implementations
+	* Start the Zuul API Gateway Server
+* Start RabbitMQ
+* Start Zipkin Tracing Server

@@ -8,8 +8,14 @@ import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 import com.netflix.zuul.exception.ZuulException;
 
+/**
+ * Zuul custom logging filter.
+ *
+ */
 @Component
 public class ZuulLoggingFilter extends ZuulFilter {
+
+  // TODO implement other filters for authorization and security
 
   private Logger logger = LoggerFactory.getLogger(this.getClass());
 

@@ -8,6 +8,7 @@ import nl.svb.leaseacarapi.leasecalculationservice.bean.LeaseRateCalculation;
 import nl.svb.leaseacarapi.leasecalculationservice.proxy.CarServiceProxy;
 import nl.svb.leaseacarapi.leasecalculationservice.proxy.CustomerServiceProxy;
 import nl.svb.leaseacarapi.leasecalculationservice.proxy.InterestRateServiceProxy;
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -33,6 +34,7 @@ public class LeaseCalculationController {
   @Autowired
   private CustomerServiceProxy customerServiceProxy;
 
+  private final Logger logger = org.slf4j.LoggerFactory.getLogger(this.getClass());
 
   /**
    * Calculate lease rate.
@@ -49,6 +51,8 @@ public class LeaseCalculationController {
       + "interestrate/{interestRateId}/customer/{customerId}")
   public ResponseEntity<?> calculateLeaseRate(@PathVariable int carId, @PathVariable int mileage,
       @PathVariable int duration, @PathVariable int interestRateId, @PathVariable int customerId) {
+
+    final ResponseEntity<LeaseRateCalculation> responseEntity;
 
     // get car object from car-service
     final Optional<CarBean> optionalCarBean = carServiceProxy.getCarById(carId);
@@ -71,29 +75,17 @@ public class LeaseCalculationController {
       // calculate lease rate
       leaseRateCalculation.calculate();
 
-      return new ResponseEntity<>(leaseRateCalculation, HttpStatus.OK);
+      responseEntity = new ResponseEntity<>(leaseRateCalculation, HttpStatus.OK);
+
+      logger.info("Calculate Lease Rate --> Response Code -> {} - Response -> {} ",
+          responseEntity.getStatusCodeValue(), responseEntity.getBody());
 
     } else {
 
-      // return appropriate HTTP response code
-
-      if (!optionalCarBean.isPresent()) {
-
-        return new ResponseEntity<>("No Car Enity found for provided ID ->" + carId,
-            HttpStatus.NOT_FOUND);
-
-      } else if (!optionalInterestRateBean.isPresent()) {
-
-        return new ResponseEntity<>(
-            "No Interest Rate Entity found for provided ID ->" + interestRateId,
-            HttpStatus.NOT_FOUND);
-
-      } else {
-
-        return new ResponseEntity<>("No Customer Entity found for provided ID ->" + customerId,
-            HttpStatus.NOT_FOUND);
-      }
+      responseEntity = new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
+
+    return responseEntity;
   }
 
 }

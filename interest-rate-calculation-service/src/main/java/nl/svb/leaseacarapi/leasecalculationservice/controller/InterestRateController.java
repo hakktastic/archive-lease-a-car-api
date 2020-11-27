@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 import nl.svb.leaseacarapi.leasecalculationservice.entity.InterestRate;
 import nl.svb.leaseacarapi.leasecalculationservice.repository.InterestRateRepository;
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,6 +26,8 @@ public class InterestRateController {
   @Autowired
   private InterestRateRepository repository;
 
+  private final Logger logger = org.slf4j.LoggerFactory.getLogger(this.getClass());
+
 
   /**
    * Get Interest Rate Entity based on the ID.
@@ -35,17 +38,22 @@ public class InterestRateController {
   @GetMapping("/interestrates/{id}")
   public ResponseEntity<?> getInterestById(@PathVariable int id) {
 
+    final ResponseEntity<InterestRate> responseEntity;
     final Optional<InterestRate> optionalInterestRateEntity = repository.findById(id);
 
     if (optionalInterestRateEntity.isPresent()) {
 
-      return new ResponseEntity<>(optionalInterestRateEntity.get(), HttpStatus.OK);
+      responseEntity = new ResponseEntity<>(optionalInterestRateEntity.get(), HttpStatus.OK);
+
+      logger.info("Get Interest Rate by ID --> Response Code -> {} - Response -> {} ",
+          responseEntity.getStatusCodeValue(), responseEntity.getBody());
 
     } else {
 
-      return new ResponseEntity<>("Interest Rate Entity not found for ID -> " + id,
-          HttpStatus.NO_CONTENT);
+      responseEntity = new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
+    return responseEntity;
   }
 
   /**
