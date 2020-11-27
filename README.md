@@ -14,6 +14,7 @@ I completed the first course and I'm currently progressing the second course (Sp
 The application itself contains of four microservices (see drawing below). The lease-calculation-service calls the three other services in order to make a lease rate calcultion. The micro services called each have an in-memory H2 database with prefilled data to make the calculation possible. 
 
 *Drawing will be updated with naming server & load balancer*
+
 ![drawing](https://github.com/hakktastic/lease-a-car-api/blob/main/Drawing.jpg) 
 
 ##### Application Url's
