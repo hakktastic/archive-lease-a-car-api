@@ -1,38 +1,3 @@
-<<<<<<< HEAD
-# lease a Car Api
-
-This is a  simple microservices application which calculates the lease rate for a given car and customer.
-
-#### Background
-I started developing this application as an assessment for a Job application. Before I wasn't familiar with the concepts & technologies. In order to be able to build this application I also took two online courses:
-
-* [Master Java Web Services and RESTful API with Spring Boot](https://www.udemy.com/course/spring-web-services-tutorial/)
-* [Master Microservices with Spring Boot and Spring Cloud](https://www.udemy.com/course/microservices-with-spring-boot-and-spring-cloud/)
-
-I completed the first course and I'm currently progressing the second course (Spring Cloud). So far so good and I'm really enjoying it!
-
-### The application
-The application itself:
-
-![drawing](https://github.com/hakktastic/lease-a-car-api/blob/main/Drawing.jpg)
-
-##### Technologies
-TO DO
-##### Status
-TO DO
-
-##### To do
-TO DO
-
-### Development
-TO DO
-
-### Setup
-TO DO
-
-### Service URL's
-TO DO
-=======
 # lease a Car Api
 
 This is a  simple microservices application which calculates the lease rate for a given car and customer.
@@ -48,6 +13,7 @@ I completed the first course and I'm currently progressing the second course (Sp
 ### The application
 The application itself contains of four microservices (see drawing below). The lease-calculation-service calls the three other services in order to make a lease rate calcultion. The micro services called each have an in-memory H2 database with prefilled data to make the calculation possible. 
 
+*Drawing will be updated with naming server & load balancer*
 ![drawing](https://github.com/hakktastic/lease-a-car-api/blob/main/Drawing.jpg) 
 
 ##### Application Url's
@@ -56,8 +22,10 @@ Service | Url:port | H2 Console
 ------------ | ------------- | -------------
 lease-calculation-service | http://localhost:8080
 customer-service | http://localhost:8081 | http://localhost:8083/h2-console
-car-service | http://localhost:8082 | http://localhost:8083/h2-console
+car-service | http://localhost:8082 | http://localhost:8082/h2-console
 interest-rate-calculation-service | http://localhost:8083 | http://localhost:8083/h2-console
+Eureka Naming Server | http://localhost:8761 | -
+Spring Cloud Config Server | http://localhost:8888
 
 ##### Technologies
 The technologies used for developing this application are as follows:
@@ -69,6 +37,8 @@ The technologies used for developing this application are as follows:
   * Spring Boot Devtools
   * Spring Boot Actuator
   * Spring Cloud OpenFeign
+  * Spring Cloud Config Server
+  * Netflix Ribbon (load balancer) & Eureka (naming server)
   * H2 Database
 * Maven, JUnit & Mockito
 * Eclipse, Postman
@@ -79,14 +49,14 @@ The upcoming period, while completing the second course I will be working on the
 
 * Spring Security > how do I secure Rest calls?
 * Swagger > Document Rest services
-* Spring Cloud Config Server > Manage application properties centralized
-* Netflix Ribbon > Load balancing
-* Netflix Eureka > Naming Server
 * Netflix Zuul > API Gateway
 * RabbitMQ > Messaging Broker
 * Zipkin > Tracing
 * Spring Cloud Bus > Dynamic configuration changing
 * Netflix Hystrix > Manage failures and fallbacks
+
+### TODOLO
+* Replace Netflix Ribbon load balancer with Spring Cloud Load Balancer
 
 ### Setup
 In order to run this application within you favourite IDE:
@@ -98,5 +68,3 @@ In order to run this application within you favourite IDE:
 * Run the applications as Java- or Spring Boot application 
 
 *Startup the lease-calculation service last because it will need the other services for the calculation.*
-
->>>>>>> branch 'main' of https://github.com/hakktastic/lease-a-car-api
