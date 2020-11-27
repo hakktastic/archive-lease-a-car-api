@@ -10,10 +10,18 @@ import org.springframework.web.bind.annotation.PathVariable;
 /**
  * Proxy for retrieving Interest Rate Entities from Interest-Rate-Calculation-Service through Feign.
  *
+ * <p>
+ * The request is executed through the Zuul API Gateway by pointing the Feign client to the gateway
+ * <b>{@code netflix-zuul-api-gateway-server}</b> instead of the service itself.
+ * </p>
+ *
  * @author HAKKI CABUK
  *
  */
-@FeignClient(name = "interest-rate-calculation-service")
+
+// Multiple Feign clients require a {@code contextId} annotation attribute
+@FeignClient(contextId = "interest-rate-calculation-service",
+    name = "netflix-zuul-api-gateway-server")
 @RibbonClient(name = "interest-rate-calculation-service")
 public interface InterestRateServiceProxy {
 
@@ -23,7 +31,7 @@ public interface InterestRateServiceProxy {
    * @param id ID of the Interest Object
    * @return Returns a {@link InterestRateBean} containing interest rate data
    */
-  @GetMapping("/interestrates/{id}")
+  @GetMapping("/interest-rate-calculation-service/interestrates/{id}")
   Optional<InterestRateBean> getInterestById(@PathVariable int id);
 
 }
