@@ -68,10 +68,10 @@ In order to run this application within you favourite IDE:
 * Import the projects with Maven
 * Install the Maven dependencies
 * Build the projects
-* Download and Install latest version of ![RabbitMQ](https://www.rabbitmq.com/download.html)
+* Download and Install latest version of [RabbitMQ](https://www.rabbitmq.com/download.html)
 	* A prerequisite for RabbitMQ is the installation of Erlang libraries
-	* Download and install the libraries of Erlang: ![Erlang OTP](https://www.erlang.org/downloads)
-* Download ![Zipkin Tracing Server](https://search.maven.org/remote_content?g=io.zipkin&a=zipkin-server&v=LATEST&c=exec) (executable jar)
+	* Download and install the libraries of Erlang: [Erlang OTP](https://www.erlang.org/downloads)
+* Download [Zipkin Tracing Server](https://search.maven.org/remote_content?g=io.zipkin&a=zipkin-server&v=LATEST&c=exec) (executable jar)
 * Run the applications as Java- or Spring Boot application 
 	* Start the Eureka Naming Server
 	* Start the micros services implementations
