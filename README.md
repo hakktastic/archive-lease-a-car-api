@@ -78,4 +78,4 @@ In order to run this application within you favourite IDE:
 	* Start the Zuul API Gateway Server
 * Start RabbitMQ
 * Start Zipkin Tracing Server
-	* Windows: use (launch-zipkin-server.cmd](https://github.com/hakktastic/lease-a-car-api/blob/main/launch-zipkin-server.cmd)
+	* Windows: use [launch-zipkin-server.cmd](https://github.com/hakktastic/lease-a-car-api/blob/main/launch-zipkin-server.cmd)
