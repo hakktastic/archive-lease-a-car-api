@@ -1,6 +1,9 @@
 package nl.svb.leaseacarapi.leasecalculationservice.bean;
 
 import java.time.LocalDate;
+import org.apache.commons.lang.builder.EqualsBuilder;
+import org.apache.commons.lang.builder.ReflectionToStringBuilder;
+import org.apache.commons.lang.builder.ToStringStyle;
 
 /**
  * Interest Rate Bean.
@@ -33,6 +36,22 @@ public class InterestRateBean {
     this.startDate = startDate;
   }
 
+  @Override
+  public boolean equals(Object obj) {
+
+    boolean equation = false;
+
+    if (obj instanceof InterestRateBean) {
+
+      final InterestRateBean otherEntity = (InterestRateBean) obj;
+
+      equation = new EqualsBuilder().appendSuper(super.equals(obj))
+          .append(this.getId(), otherEntity.getId()).isEquals();
+    }
+
+    return equation;
+  }
+
   public int getId() {
     return id;
   }
@@ -55,5 +74,10 @@ public class InterestRateBean {
 
   public void setStartDate(LocalDate startDate) {
     this.startDate = startDate;
+  }
+
+  @Override
+  public String toString() {
+    return ReflectionToStringBuilder.toString(this, ToStringStyle.MULTI_LINE_STYLE);
   }
 }

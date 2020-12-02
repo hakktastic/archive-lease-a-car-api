@@ -2,6 +2,8 @@ package nl.svb.leaseacarapi.leasecalculationservice.bean;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import org.apache.commons.lang.builder.ReflectionToStringBuilder;
+import org.apache.commons.lang.builder.ToStringStyle;
 
 /**
  * Lease Rate Calculation class.
@@ -102,5 +104,10 @@ public class LeaseRateCalculation {
 
   public void setMileage(int mileage) {
     this.mileage = mileage;
+  }
+
+  @Override
+  public String toString() {
+    return ReflectionToStringBuilder.toString(this, ToStringStyle.MULTI_LINE_STYLE);
   }
 }

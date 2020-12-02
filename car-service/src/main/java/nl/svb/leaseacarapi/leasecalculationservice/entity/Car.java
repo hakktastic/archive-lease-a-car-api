@@ -3,6 +3,9 @@ package nl.svb.leaseacarapi.leasecalculationservice.entity;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import org.apache.commons.lang.builder.EqualsBuilder;
+import org.apache.commons.lang.builder.ReflectionToStringBuilder;
+import org.apache.commons.lang.builder.ToStringStyle;
 
 /**
  * JPA Car Entity.
@@ -52,6 +55,22 @@ public class Car {
     this.grossPrice = grossPrice;
     this.nettPrice = nettPrice;
     this.hp = hp;
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+
+    boolean equation = false;
+
+    if (obj instanceof Car) {
+
+      final Car otherEntity = (Car) obj;
+
+      equation = new EqualsBuilder().appendSuper(super.equals(obj))
+          .append(this.getId(), otherEntity.getId()).isEquals();
+    }
+
+    return equation;
   }
 
   public double getGrossPrice() {
@@ -116,5 +135,10 @@ public class Car {
 
   public void setVersion(String version) {
     this.version = version;
+  }
+
+  @Override
+  public String toString() {
+    return ReflectionToStringBuilder.toString(this, ToStringStyle.MULTI_LINE_STYLE);
   }
 }

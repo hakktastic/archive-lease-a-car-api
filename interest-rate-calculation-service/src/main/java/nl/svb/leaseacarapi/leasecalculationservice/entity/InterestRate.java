@@ -4,6 +4,9 @@ import java.time.LocalDate;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import org.apache.commons.lang.builder.EqualsBuilder;
+import org.apache.commons.lang.builder.ReflectionToStringBuilder;
+import org.apache.commons.lang.builder.ToStringStyle;
 
 /**
  * JPA interest Rate Entity.
@@ -39,6 +42,22 @@ public class InterestRate {
     this.startDate = startDate;
   }
 
+  @Override
+  public boolean equals(Object obj) {
+
+    boolean equation = false;
+
+    if (obj instanceof InterestRate) {
+
+      final InterestRate otherEntity = (InterestRate) obj;
+
+      equation = new EqualsBuilder().appendSuper(super.equals(obj))
+          .append(this.getId(), otherEntity.getId()).isEquals();
+    }
+
+    return equation;
+  }
+
   public int getId() {
     return id;
   }
@@ -61,5 +80,10 @@ public class InterestRate {
 
   public void setStartDate(LocalDate startDate) {
     this.startDate = startDate;
+  }
+
+  @Override
+  public String toString() {
+    return ReflectionToStringBuilder.toString(this, ToStringStyle.MULTI_LINE_STYLE);
   }
 }

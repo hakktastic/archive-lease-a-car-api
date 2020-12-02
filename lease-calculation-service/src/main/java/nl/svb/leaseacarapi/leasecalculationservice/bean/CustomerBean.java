@@ -1,5 +1,9 @@
 package nl.svb.leaseacarapi.leasecalculationservice.bean;
 
+import org.apache.commons.lang.builder.EqualsBuilder;
+import org.apache.commons.lang.builder.ReflectionToStringBuilder;
+import org.apache.commons.lang.builder.ToStringStyle;
+
 public class CustomerBean {
 
   private int id;
@@ -40,6 +44,22 @@ public class CustomerBean {
     this.place = place;
     this.email = email;
     this.phoneNumber = phoneNumber;
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+
+    boolean equation = false;
+
+    if (obj instanceof CustomerBean) {
+
+      final CustomerBean otherEntity = (CustomerBean) obj;
+
+      equation = new EqualsBuilder().appendSuper(super.equals(obj))
+          .append(this.getId(), otherEntity.getId()).isEquals();
+    }
+
+    return equation;
   }
 
   public String getEmail() {
@@ -104,5 +124,10 @@ public class CustomerBean {
 
   public void setZipcode(String zipcode) {
     this.zipcode = zipcode;
+  }
+
+  @Override
+  public String toString() {
+    return ReflectionToStringBuilder.toString(this, ToStringStyle.MULTI_LINE_STYLE);
   }
 }
