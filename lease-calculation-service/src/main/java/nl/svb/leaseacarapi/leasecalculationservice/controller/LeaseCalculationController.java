@@ -68,6 +68,8 @@ public class LeaseCalculationController {
     if (optionalCarBean.isPresent() && optionalInterestRateBean.isPresent()
         && optionalCustomerBean.isPresent()) {
 
+      // TODO move lease calculation to a service object
+
       // create lease calculation object
       LeaseRateCalculation leaseRateCalculation = new LeaseRateCalculation(optionalCarBean.get(),
           optionalInterestRateBean.get(), optionalCustomerBean.get(), mileage, duration);
