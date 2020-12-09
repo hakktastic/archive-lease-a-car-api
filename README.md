@@ -60,6 +60,7 @@ The upcoming period, while completing the second course I will be working on the
 * Spring Cloud Bus > Dynamic configuration changing
 * Netflix Hystrix > Manage failures and fallbacks
 * Instead of Netflix Ribbon load balancer try use Spring Cloud Load Balancer
+* Refactor Maven projects to Maven multi-module projects in combination with DDD
 
 ### Setup
 In order to run this application within you favourite IDE:
