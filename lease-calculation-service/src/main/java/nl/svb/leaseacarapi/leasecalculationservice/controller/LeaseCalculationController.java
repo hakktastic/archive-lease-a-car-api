@@ -1,5 +1,6 @@
 package nl.svb.leaseacarapi.leasecalculationservice.controller;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -62,6 +63,7 @@ public class LeaseCalculationController {
   @ApiResponses(value = {@ApiResponse(code = 200, message = "Successfully calculated lease rate"),
       @ApiResponse(code = 404,
           message = "Valid request, but no customer/car/interestrate objects not found")})
+  @HystrixCommand(fallbackMethod = "calculateLeaseRateFallback")
   public ResponseEntity<?> calculateLeaseRate(@PathVariable int carId, @PathVariable int mileage,
       @PathVariable int duration, @PathVariable int interestRateId, @PathVariable int customerId) {
 
@@ -101,6 +103,17 @@ public class LeaseCalculationController {
     }
 
     return responseEntity;
+  }
+
+  /**
+   * {@link HystrixCommand} for {@code calculateLeaseRate()} method.
+   *
+   * @return Returns an empty {@link ResponseEntity} with an {@link HttpStatus} code 404
+   */
+  public ResponseEntity<String> calculateLeaseRateFallback() {
+
+    // sample implementation
+    return new ResponseEntity<>("Hystrix fallback command", HttpStatus.I_AM_A_TEAPOT);
   }
 
 }

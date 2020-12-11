@@ -1,5 +1,6 @@
 package nl.svb.leaseacarapi.leasecalculationservice.controller;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
@@ -86,6 +87,7 @@ public class CustomerController {
       value = {@ApiResponse(code = 200, message = "Successfully returned all Customer entities"),
           @ApiResponse(code = 404, message = "Valid request, but not object(s) found.")})
   @GetMapping(path = "/customers", produces = MediaType.APPLICATION_JSON_VALUE)
+  @HystrixCommand(fallbackMethod = "getCustomerFallback")
   public ResponseEntity<?> getAllCustomers() {
 
     final List<Customer> customerEntityList = repository.findAll();
@@ -113,6 +115,7 @@ public class CustomerController {
       value = {@ApiResponse(code = 200, message = "Successfully returned Customer entity"),
           @ApiResponse(code = 404, message = "Valid request, but not object found.")})
   @GetMapping(path = "/customers/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+  @HystrixCommand(fallbackMethod = "getCustomerFallback")
   public ResponseEntity<?> getCustomerById(@PathVariable int id) {
 
     // This is for debugging purposes of Ribbon.
@@ -149,6 +152,7 @@ public class CustomerController {
       value = {@ApiResponse(code = 200, message = "Successfully returned Customer entity"),
           @ApiResponse(code = 404, message = "Valid request, but not object found.")})
   @GetMapping(path = "/customers/name/{name}", produces = MediaType.APPLICATION_JSON_VALUE)
+  @HystrixCommand(fallbackMethod = "getCustomerFallback")
   public ResponseEntity<?> getCustomerByName(@PathVariable String name) {
 
 
@@ -163,6 +167,18 @@ public class CustomerController {
       return new ResponseEntity<>("Customer Entity not found for name -> " + name,
           HttpStatus.NO_CONTENT);
     }
+  }
+
+  /**
+   * {@link HystrixCommand} for {@code getCustomer*()} methods.
+   *
+   * @return Returns an empty {@link ResponseEntity} with an {@link HttpStatus} code 404
+   */
+  public ResponseEntity<String> getCustomerFallback() {
+
+    // sample implementation
+    return new ResponseEntity<>("Hystrix fallback command", HttpStatus.I_AM_A_TEAPOT);
+
   }
 
 }

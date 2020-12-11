@@ -1,5 +1,6 @@
 package nl.svb.leaseacarapi.leasecalculationservice.controller;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
@@ -77,6 +78,7 @@ public class CarController {
   @ApiResponses(value = {@ApiResponse(code = 200, message = "Successfully returned Car entity"),
       @ApiResponse(code = 404, message = "Valid request, but not object found.")})
   @GetMapping(path = "/cars/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+  @HystrixCommand(fallbackMethod = "getCarFallback")
   public ResponseEntity<?> getCar(@PathVariable int id) {
 
     final ResponseEntity<Car> responseEntity;
@@ -98,6 +100,17 @@ public class CarController {
   }
 
   /**
+   * {@link HystrixCommand} for {@code getCar*()} methods.
+   *
+   * @return Returns an empty {@link ResponseEntity} with an {@link HttpStatus} code 404
+   */
+  public ResponseEntity<String> getCarFallback() {
+
+    // sample implementation
+    return new ResponseEntity<>("Hystrix fallback command", HttpStatus.I_AM_A_TEAPOT);
+  }
+
+  /**
    * Get all Car Entities.
    *
    * @return Returns a {@link List} with Car Entities.
@@ -108,6 +121,7 @@ public class CarController {
       value = {@ApiResponse(code = 200, message = "Successfully returned all Car entities"),
           @ApiResponse(code = 404, message = "Valid request, but not objects found.")})
   @GetMapping(path = "/cars", produces = MediaType.APPLICATION_JSON_VALUE)
+  @HystrixCommand(fallbackMethod = "getCarFallback")
   public ResponseEntity<?> getCars() {
 
     final List<Car> careEntityList = repository.findAll();

@@ -1,5 +1,6 @@
 package nl.svb.leaseacarapi.leasecalculationservice.controller;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
@@ -45,6 +46,7 @@ public class InterestRateController {
   @ApiResponses(value = {
       @ApiResponse(code = 200, message = "Successfully returned interest rate object"),
       @ApiResponse(code = 404, message = "Valid request, but not object found for provided ID.")})
+  @HystrixCommand(fallbackMethod = "getIterestRateFallback")
   public ResponseEntity<?> getInterestById(@PathVariable int id) {
 
     final ResponseEntity<InterestRate> responseEntity;
@@ -79,6 +81,7 @@ public class InterestRateController {
       value = {@ApiResponse(code = 200, message = "Successfully returned interest rate object"),
           @ApiResponse(code = 404,
               message = "Valid request, but not object found for provided start date.")})
+  @HystrixCommand(fallbackMethod = "getIterestRateFallback")
   public ResponseEntity<?> getInterestRateByStartDate(@PathVariable String startdate) {
 
     final LocalDate date = LocalDate.parse(startdate);
@@ -97,6 +100,17 @@ public class InterestRateController {
   }
 
   /**
+   * {@link HystrixCommand} for {@code getInterestRate*()} methods.
+   *
+   * @return Returns an empty {@link ResponseEntity} with an {@link HttpStatus} code 404
+   */
+  public ResponseEntity<String> getIterestRateFallback() {
+
+    // sample implementation
+    return new ResponseEntity<>("Hystrix fallback command", HttpStatus.I_AM_A_TEAPOT);
+  }
+
+  /**
    * Get all interest rates.
    *
    * @return Returns a {@link List} with all the interest rate objects.
@@ -107,6 +121,7 @@ public class InterestRateController {
       value = {@ApiResponse(code = 200, message = "Successfully returned interest rate object(s)"),
           @ApiResponse(code = 404, message = "Valid request, but not object(s) found.")})
   @GetMapping(path = "/interestrates", produces = MediaType.APPLICATION_JSON_VALUE)
+  @HystrixCommand(fallbackMethod = "getIterestRateFallback")
   public ResponseEntity<?> getIterestRates() {
 
     final List<InterestRate> responseList = repository.findAll();
