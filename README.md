@@ -3,12 +3,7 @@
 This is a  simple microservices application which calculates the lease rate for a given car and customer.
 
 ### Background
-I started developing this application as an assessment for a Job application. Before I wasn't familiar with concepts & technologies like Spring Boot and microservices. In order to be able to build this application I took two online courses:
-
-* [Master Java Web Services and RESTful API with Spring Boot](https://www.udemy.com/course/spring-web-services-tutorial/)
-* [Master Microservices with Spring Boot and Spring Cloud](https://www.udemy.com/course/microservices-with-spring-boot-and-spring-cloud/)
-
-I completed the first course and I'm currently progressing the second course (Spring Cloud). So far so good and I'm really enjoying it!
+I started developing this application as an assessment for a Job application. Before I wasn't familiar with concepts & technologies like Spring Boot and microservices.
 
 ### The application
 The application itself contains of four microservices (see drawing below). The lease-calculation-service calls the three other services in order to make a lease rate calcultion. The micro services called each have an in-memory H2 database with prefilled data to make the calculation possible. 
