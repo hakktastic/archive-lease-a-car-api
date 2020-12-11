@@ -1,5 +1,8 @@
 package nl.svb.leaseacarapi.leasecalculationservice.controller;
 
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
@@ -8,6 +11,7 @@ import nl.svb.leaseacarapi.leasecalculationservice.repository.InterestRateReposi
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -35,7 +39,12 @@ public class InterestRateController {
    * @param id ID of the Interest Rate Entity
    * @return Returns {@link InterestRate} Entity
    */
-  @GetMapping("/interestrates/{id}")
+  @GetMapping(path = "/interestrates/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+  @ApiOperation(produces = MediaType.APPLICATION_JSON_VALUE,
+      notes = "Returns the interest rate object for provided ID.", value = "")
+  @ApiResponses(value = {
+      @ApiResponse(code = 200, message = "Successfully returned interest rate object"),
+      @ApiResponse(code = 404, message = "Valid request, but not object found for provided ID.")})
   public ResponseEntity<?> getInterestById(@PathVariable int id) {
 
     final ResponseEntity<InterestRate> responseEntity;
@@ -62,7 +71,14 @@ public class InterestRateController {
    * @param startdate start date of interest rate
    * @return Returns a {@link ResponseEntity} containing a {@link InterestRate} container object
    */
-  @GetMapping("/interestrates/startdate/{startdate}")
+  @GetMapping(path = "/interestrates/startdate/{startdate}",
+      produces = MediaType.APPLICATION_JSON_VALUE)
+  @ApiOperation(produces = MediaType.APPLICATION_JSON_VALUE,
+      notes = "Returns the interest rate object for provided start date.", value = "")
+  @ApiResponses(
+      value = {@ApiResponse(code = 200, message = "Successfully returned interest rate object"),
+          @ApiResponse(code = 404,
+              message = "Valid request, but not object found for provided start date.")})
   public ResponseEntity<?> getInterestRateByStartDate(@PathVariable String startdate) {
 
     final LocalDate date = LocalDate.parse(startdate);
@@ -85,7 +101,12 @@ public class InterestRateController {
    *
    * @return Returns a {@link List} with all the interest rate objects.
    */
-  @GetMapping("/interestrates")
+  @ApiOperation(produces = MediaType.APPLICATION_JSON_VALUE,
+      notes = "Returns the interest rate object for provided ID.", value = "")
+  @ApiResponses(
+      value = {@ApiResponse(code = 200, message = "Successfully returned interest rate object(s)"),
+          @ApiResponse(code = 404, message = "Valid request, but not object(s) found.")})
+  @GetMapping(path = "/interestrates", produces = MediaType.APPLICATION_JSON_VALUE)
   public ResponseEntity<?> getIterestRates() {
 
     final List<InterestRate> responseList = repository.findAll();

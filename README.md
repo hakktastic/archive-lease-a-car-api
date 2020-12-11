@@ -19,16 +19,16 @@ The application itself contains of four microservices (see drawing below). The l
 
 ##### Application Url's
 
-Service | Url:port | H2 Console
+Service | Url:port | H2 Console | API Documentation
 ------------ | ------------- | -------------
-lease-calculation-service | http://localhost:8080
-customer-service | http://localhost:8081 | http://localhost:8083/h2-console
-car-service | http://localhost:8082 | http://localhost:8082/h2-console
-interest-rate-calculation-service | http://localhost:8083 | http://localhost:8083/h2-console
-Netflix Eureka Naming Server | http://localhost:8761 | -
-Netflix Zuul Api Gateway Server | http://localhost:8765 | -
-Zipkin  | http://localhost:9411/zipkin/ | -
-Spring Cloud Config Server | http://localhost:8888
+lease-calculation-service | http://localhost:8080 | - | http://localhost:8080/swagger-ui/#/lease-calculation-controller
+customer-service | http://localhost:8081 | http://localhost:8083/h2-console | http://localhost:8081/swagger-ui/#/customer-controller
+car-service | http://localhost:8082 | http://localhost:8082/h2-console | http://localhost:8082/swagger-ui/#/car-controller
+interest-rate-calculation-service | http://localhost:8083 | http://localhost:8083/h2-console | http://localhost:8083/swagger-ui/#/interest-rate-controller
+Netflix Eureka Naming Server | http://localhost:8761 | - | -
+Netflix Zuul Api Gateway Server | http://localhost:8765 | - | -
+Zipkin  | http://localhost:9411/zipkin/ | - | -
+Spring Cloud Config Server | http://localhost:8888 | - | -
 
 ##### Technologies
 The technologies used for developing this application are as follows:
@@ -48,6 +48,7 @@ The technologies used for developing this application are as follows:
   * MQRabbit
   * Zipkin Tracing Server
   * H2 Database
+  * Springfox (Swagger)
 * Maven, JUnit & Mockito
 * Eclipse, Postman
 * Web Browser
@@ -56,11 +57,14 @@ The technologies used for developing this application are as follows:
 The upcoming period, while completing the second course I will be working on the Spring Cloud elements like: 
 
 * Spring Security > how do I secure Rest calls?
-* Swagger > Document Rest services
 * Spring Cloud Bus > Dynamic configuration changing
 * Netflix Hystrix > Manage failures and fallbacks
 * Instead of Netflix Ribbon load balancer try use Spring Cloud Load Balancer
 * Refactor Maven projects to Maven multi-module projects in combination with DDD
+* Dockerize projects
+	* include in maven build process (spotify docker maven plugin)
+	* improve caching by splitting up dependencies & classes (maven dependency plugin)
+* Change from H2 to Docker MySQL database; use H2 for tests
 
 ### Setup
 In order to run this application within you favourite IDE:

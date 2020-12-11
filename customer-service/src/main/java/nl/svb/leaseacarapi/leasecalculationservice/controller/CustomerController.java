@@ -1,5 +1,8 @@
 package nl.svb.leaseacarapi.leasecalculationservice.controller;
 
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import java.util.List;
 import java.util.Optional;
 import nl.svb.leaseacarapi.leasecalculationservice.entity.Customer;
@@ -8,6 +11,7 @@ import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -41,7 +45,11 @@ public class CustomerController {
    * @param customer {@link Customer} data
    * @return Returns a {@link Customer} Entity
    */
-  @PostMapping("/customers")
+  @ApiOperation(produces = MediaType.APPLICATION_JSON_VALUE,
+      notes = "Returns the created Customer object for provided values.", value = "")
+  @ApiResponses(
+      value = {@ApiResponse(code = 200, message = "Successfully created Customer object")})
+  @PostMapping(path = "/customers", produces = MediaType.APPLICATION_JSON_VALUE)
   public ResponseEntity<?> createCustomer(@RequestBody Customer customer) {
 
     final Customer customerEntity = repository.save(customer);
@@ -54,7 +62,11 @@ public class CustomerController {
    * @param id ID of Customer Entity
    * @return Returns HTTP Response Code 202 Accepted if Customer is deleted
    */
-  @DeleteMapping("/customers/{id}")
+  @ApiOperation(produces = MediaType.APPLICATION_JSON_VALUE,
+      notes = "Delete Customer entity for provided ID.", value = "")
+  @ApiResponses(
+      value = {@ApiResponse(code = 200, message = "Customer entity successfully deleted")})
+  @DeleteMapping(path = "/customers/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
   public ResponseEntity<?> deleteCustomer(@PathVariable int id) {
 
     final Customer customerEntity = repository.getOne(id);
@@ -68,7 +80,12 @@ public class CustomerController {
    * @return Returns a {@link List} with all Customer Entities
    *
    */
-  @GetMapping("/customers")
+  @ApiOperation(produces = MediaType.APPLICATION_JSON_VALUE,
+      notes = "Returns all Customer entitites.", value = "")
+  @ApiResponses(
+      value = {@ApiResponse(code = 200, message = "Successfully returned all Customer entities"),
+          @ApiResponse(code = 404, message = "Valid request, but not object(s) found.")})
+  @GetMapping(path = "/customers", produces = MediaType.APPLICATION_JSON_VALUE)
   public ResponseEntity<?> getAllCustomers() {
 
     final List<Customer> customerEntityList = repository.findAll();
@@ -90,7 +107,12 @@ public class CustomerController {
    *
    * @return Returns a {@link Customer} Entity
    */
-  @GetMapping("/customers/{id}")
+  @ApiOperation(produces = MediaType.APPLICATION_JSON_VALUE,
+      notes = "Returns Customer entity for provided ID..", value = "")
+  @ApiResponses(
+      value = {@ApiResponse(code = 200, message = "Successfully returned Customer entity"),
+          @ApiResponse(code = 404, message = "Valid request, but not object found.")})
+  @GetMapping(path = "/customers/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
   public ResponseEntity<?> getCustomerById(@PathVariable int id) {
 
     // This is for debugging purposes of Ribbon.
@@ -121,7 +143,12 @@ public class CustomerController {
    * @param name First- and last name of Customer Entity
    * @return Returns a {@link Customer} Entity
    */
-  @GetMapping("/customers/name/{name}")
+  @ApiOperation(produces = MediaType.APPLICATION_JSON_VALUE,
+      notes = "Returns Customer entity for provided name..", value = "")
+  @ApiResponses(
+      value = {@ApiResponse(code = 200, message = "Successfully returned Customer entity"),
+          @ApiResponse(code = 404, message = "Valid request, but not object found.")})
+  @GetMapping(path = "/customers/name/{name}", produces = MediaType.APPLICATION_JSON_VALUE)
   public ResponseEntity<?> getCustomerByName(@PathVariable String name) {
 
 

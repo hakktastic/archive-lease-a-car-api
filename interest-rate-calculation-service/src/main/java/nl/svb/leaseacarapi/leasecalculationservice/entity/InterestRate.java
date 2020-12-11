@@ -1,9 +1,13 @@
 package nl.svb.leaseacarapi.leasecalculationservice.entity;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import java.time.LocalDate;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.Future;
+import javax.validation.constraints.Min;
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
@@ -15,12 +19,17 @@ import org.apache.commons.lang.builder.ToStringStyle;
  *
  */
 @Entity
+@ApiModel(description = "Properties of an interest rate calculation")
 public class InterestRate {
 
   @Id
   @GeneratedValue
   private int id;
+  @Min(value = 1L)
+  @ApiModelProperty(notes = "The interest rate should be at least 1%")
   private double interestRate;
+  @Future
+  @ApiModelProperty(notes = "Please enter a date in the future")
   private LocalDate startDate;
 
   /**

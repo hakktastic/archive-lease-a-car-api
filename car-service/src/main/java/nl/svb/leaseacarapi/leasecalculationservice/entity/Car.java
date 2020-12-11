@@ -1,8 +1,11 @@
 package nl.svb.leaseacarapi.leasecalculationservice.entity;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.Size;
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
@@ -14,14 +17,18 @@ import org.apache.commons.lang.builder.ToStringStyle;
  *
  */
 @Entity
+@ApiModel
 public class Car {
 
   @Id
   @GeneratedValue
+  @ApiModelProperty(notes = "The ID is auto generated")
   private int id;
   private String make;
   private String model;
   private String version;
+  @Size(min = 2, message = "A car should have at least two doors")
+  @ApiModelProperty(notes = "A car should have at least two doors")
   private int numberOfDoors;
   private double grossPrice;
   private double nettPrice;
