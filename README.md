@@ -56,15 +56,18 @@ The technologies used for developing this application are as follows:
 ### Development
 The upcoming period, while completing the second course I will be working on the Spring Cloud elements like: 
 
-* Spring Security > how do I secure Rest calls?
-* Spring Cloud Bus > Dynamic configuration changing
+####SHORT TERM
 * Netflix Hystrix > Manage failures and fallbacks
-* Instead of Netflix Ribbon load balancer try use Spring Cloud Load Balancer
 * Refactor Maven projects to Maven multi-module projects in combination with DDD
 * Dockerize projects
 	* include in maven build process (spotify docker maven plugin)
 	* improve caching by splitting up dependencies & classes (maven dependency plugin)
-* Change from H2 to Docker MySQL database; use H2 for tests
+	* Change from H2 to Docker MySQL database; use H2 for tests
+* Spring Security > how do I secure Rest calls?
+
+####MID TERM
+* Instead of Netflix Ribbon load balancer try use Spring Cloud Load Balancer
+* Spring Cloud Bus > Dynamic configuration changing
 
 ### Setup
 In order to run this application within you favourite IDE:
