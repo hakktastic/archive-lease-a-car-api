@@ -1,5 +1,9 @@
 package nl.svb.leaseacarapi.leasecalculationservice.controller;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import java.util.Optional;
 import nl.svb.leaseacarapi.leasecalculationservice.bean.CarBean;
 import nl.svb.leaseacarapi.leasecalculationservice.bean.CustomerBean;
@@ -11,6 +15,7 @@ import nl.svb.leaseacarapi.leasecalculationservice.proxy.InterestRateServiceProx
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,6 +28,7 @@ import org.springframework.web.bind.annotation.RestController;
  *
  */
 @RestController
+@ApiModel
 public class LeaseCalculationController {
 
   @Autowired
@@ -47,8 +53,15 @@ public class LeaseCalculationController {
    * @param customerId ID of the customer
    * @return Returns a {@link ResponseEntity} containing a {@link LeaseRateCalculation} object
    */
-  @GetMapping("/leaserates/car/{carId}/mileage/{mileage}/duration/{duration}/"
-      + "interestrate/{interestRateId}/customer/{customerId}")
+  @GetMapping(
+      path = "/leaserates/car/{carId}/mileage/{mileage}/duration/{duration}/"
+          + "interestrate/{interestRateId}/customer/{customerId}",
+      produces = MediaType.APPLICATION_JSON_VALUE)
+  @ApiOperation(produces = MediaType.APPLICATION_JSON_VALUE,
+      notes = "Calculates the lease rate with provided params", value = "")
+  @ApiResponses(value = {@ApiResponse(code = 200, message = "Successfully calculated lease rate"),
+      @ApiResponse(code = 404,
+          message = "Valid request, but no customer/car/interestrate objects not found")})
   public ResponseEntity<?> calculateLeaseRate(@PathVariable int carId, @PathVariable int mileage,
       @PathVariable int duration, @PathVariable int interestRateId, @PathVariable int customerId) {
 

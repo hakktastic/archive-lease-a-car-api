@@ -1,8 +1,12 @@
 package nl.svb.leaseacarapi.leasecalculationservice.entity;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
@@ -14,16 +18,21 @@ import org.apache.commons.lang.builder.ToStringStyle;
  *
  */
 @Entity
+@ApiModel(description = "Properties of a customer.")
 public class Customer {
 
   @Id
   @GeneratedValue
+  @ApiModelProperty(notes = "The ID is auto generated")
   private int id;
   private String name;
   private String street;
   private int houseNumber;
   private String zipcode;
   private String place;
+  @Pattern(regexp = "\"^(.+)@(.+)$\"")
+  @NotNull
+  @ApiModelProperty(notes = "Please enter a valid email address")
   private String email;
   private int phoneNumber;
 
