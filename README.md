@@ -40,6 +40,7 @@ The technologies used for developing this application are as follows:
   * Netflix Ribbon Load Balancer
   * Netflix Eureka Naming Server
   * Netflix Zuul API Gateway Server
+  * Netflix Hystrix
   * MQRabbit
   * Zipkin Tracing Server
   * H2 Database
@@ -52,7 +53,6 @@ The technologies used for developing this application are as follows:
 The upcoming period, while completing the second course I will be working on the Spring Cloud elements like: 
 
 #### SHORT TERM
-* Netflix Hystrix > Manage failures and fallbacks
 * Refactor Maven projects to Maven multi-module projects in combination with DDD
 * Dockerize projects
 	* include in maven build process (spotify docker maven plugin)
