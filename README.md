@@ -3,12 +3,7 @@
 This is a  simple microservices application which calculates the lease rate for a given car and customer.
 
 ### Background
-I started developing this application as an assessment for a Job application. Before I wasn't familiar with concepts & technologies like Spring Boot and microservices. In order to be able to build this application I took two online courses:
-
-* [Master Java Web Services and RESTful API with Spring Boot](https://www.udemy.com/course/spring-web-services-tutorial/)
-* [Master Microservices with Spring Boot and Spring Cloud](https://www.udemy.com/course/microservices-with-spring-boot-and-spring-cloud/)
-
-I completed the first course and I'm currently progressing the second course (Spring Cloud). So far so good and I'm really enjoying it!
+I started developing this application as an assessment for a Job application. Before I wasn't familiar with concepts & technologies like Spring Boot and microservices.
 
 ### The application
 The application itself contains of four microservices (see drawing below). The lease-calculation-service calls the three other services in order to make a lease rate calcultion. The micro services called each have an in-memory H2 database with prefilled data to make the calculation possible. 
@@ -56,7 +51,7 @@ The technologies used for developing this application are as follows:
 ### Development
 The upcoming period, while completing the second course I will be working on the Spring Cloud elements like: 
 
-####SHORT TERM
+#### SHORT TERM
 * Netflix Hystrix > Manage failures and fallbacks
 * Refactor Maven projects to Maven multi-module projects in combination with DDD
 * Dockerize projects
@@ -65,7 +60,7 @@ The upcoming period, while completing the second course I will be working on the
 	* Change from H2 to Docker MySQL database; use H2 for tests
 * Spring Security > how do I secure Rest calls?
 
-####MID TERM
+#### MID TERM
 * Instead of Netflix Ribbon load balancer try use Spring Cloud Load Balancer
 * Spring Cloud Bus > Dynamic configuration changing
 
