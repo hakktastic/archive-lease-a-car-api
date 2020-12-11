@@ -20,7 +20,7 @@ The application itself contains of four microservices (see drawing below). The l
 ##### Application Url's
 
 Service | Url:port | H2 Console | API Documentation
------------- | ------------- | -------------
+------------ | ------------- | -------------  | -------------
 lease-calculation-service | http://localhost:8080 | - | http://localhost:8080/swagger-ui/#/lease-calculation-controller
 customer-service | http://localhost:8081 | http://localhost:8083/h2-console | http://localhost:8081/swagger-ui/#/customer-controller
 car-service | http://localhost:8082 | http://localhost:8082/h2-console | http://localhost:8082/swagger-ui/#/car-controller
