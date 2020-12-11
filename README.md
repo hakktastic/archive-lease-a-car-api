@@ -56,7 +56,7 @@ The technologies used for developing this application are as follows:
 ### Development
 The upcoming period, while completing the second course I will be working on the Spring Cloud elements like: 
 
-####SHORT TERM
+#### SHORT TERM
 * Netflix Hystrix > Manage failures and fallbacks
 * Refactor Maven projects to Maven multi-module projects in combination with DDD
 * Dockerize projects
@@ -65,7 +65,7 @@ The upcoming period, while completing the second course I will be working on the
 	* Change from H2 to Docker MySQL database; use H2 for tests
 * Spring Security > how do I secure Rest calls?
 
-####MID TERM
+#### MID TERM
 * Instead of Netflix Ribbon load balancer try use Spring Cloud Load Balancer
 * Spring Cloud Bus > Dynamic configuration changing
 
