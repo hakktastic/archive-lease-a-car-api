@@ -60,24 +60,32 @@ The upcoming period, while completing the second course I will be working on the
 
 #### SHORT TERM
 - [x] Refactor Maven projects to Maven multi-module projects in combination with DDD
-- [] Dockerize projects:
+- [ ] Dockerize projects:
 	- [x] include in maven build process (spotify docker maven plugin)
 	- [x] improve caching by splitting up dependencies & classes (maven dependency plugin)
-	- [] Change from H2 to Docker MySQL database; use H2 for tests
-- [] Kubernetes:
-	- [] GKE - Google Kubernetes Engine
-	- [] EKS - Amazon Elastic Kubernetes Service
-	- [] AKS - Azure Kubernetes Service
-- [] Spring Security > how do I secure Rest calls?
+	- [ ] Change from H2 to Docker MySQL database; use H2 for tests
+- [ ] Kubernetes:
+	- [ ] GKE - Google Kubernetes Engine
+	- [ ] EKS - Amazon Elastic Kubernetes Service
+	- [ ] AKS - Azure Kubernetes Service
+- [ ] Spring Security > how do I secure Rest calls?
 
 #### MID TERM
-- [] Instead of Netflix Ribbon load balancer try use Spring Cloud Load Balancer
-- [] Spring Cloud Bus > Dynamic configuration changing
+- [ ] Instead of Netflix Ribbon load balancer try use Spring Cloud Load Balancer
+- [ ] Spring Cloud Bus > Dynamic configuration changing
 
 ### Setup
 In order to run this application within you favourite IDE:
 
 * Checkout this project and it's module from my Github
 * Open a terminal and go to the root of the multimodule project
-* Run mvn clean package
-* Run docker-compose up 
+
+* Run following Docker command:
+	* The --build option will automatically build the images
+```
+docker-compose up --build
+```
+	* Otionally, one could run the containers in detached mode
+```
+docker-compose up --build -d
+```	
