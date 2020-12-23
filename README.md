@@ -4,7 +4,7 @@
 	:heavy_check_mark:Please click this <a href="https://github.com/hakktastic/multimodule-lease-a-car-api">link</a> to view the continuance of this project.
 </p>
 <p>
-	:heavy_check_mark:However, his project is useful as a basic example of microservices.
+	:heavy_check_mark:However, this project is still useful as a basic example of microservices that was built locally.
 </p>
 
 <hr />
