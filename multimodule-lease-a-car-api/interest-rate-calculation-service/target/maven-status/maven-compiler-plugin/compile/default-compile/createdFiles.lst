@@ -1,6 +1,0 @@
-nl\svb\leaseacarapi\leasecalculationservice\config\SwaggerConfig.class
-nl\svb\leaseacarapi\leasecalculationservice\repository\InterestRateRepository.class
-nl\svb\leaseacarapi\leasecalculationservice\InterestRateCalculationServiceApplication.class
-nl\svb\leaseacarapi\leasecalculationservice\ServletInitializer.class
-nl\svb\leaseacarapi\leasecalculationservice\controller\InterestRateController.class
-nl\svb\leaseacarapi\leasecalculationservice\entity\InterestRate.class
