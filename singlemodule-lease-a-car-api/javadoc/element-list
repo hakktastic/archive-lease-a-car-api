@@ -1,0 +1,6 @@
+nl.svb.leaseacarapi.leasecalculationservice
+nl.svb.leaseacarapi.leasecalculationservice.bean
+nl.svb.leaseacarapi.leasecalculationservice.controller
+nl.svb.leaseacarapi.leasecalculationservice.entity
+nl.svb.leaseacarapi.leasecalculationservice.proxy
+nl.svb.leaseacarapi.leasecalculationservice.repository
