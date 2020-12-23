@@ -1,6 +1,6 @@
 # Multimodule lease a Car Api
 
-This project is a continuation of the [singlemodule lease a car api](https://github.com/hakktastic/lease-a-car-api/tree/main/singlemodule-lease-a-car-api) project. 
+:information_source: This project is a continuation of the [singlemodule lease a car api](https://github.com/hakktastic/lease-a-car-api/tree/main/singlemodule-lease-a-car-api) project. 
 
 ### Background
 I started developing this application as an assessment for a Job application. 
