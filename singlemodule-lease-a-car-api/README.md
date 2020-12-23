@@ -1,4 +1,15 @@
-# lease a Car Api
+<h2 align=center font-size=20px>:information_source: Development of this particular has project stopped :information_source:</h2>
+
+<p>
+	:heavy_check_mark:Please click this [link](https://github.com/hakktastic/lease-a-car-api/tree/main/multimodule-lease-a-car-api) to view the continuance of this project.
+</p>
+<p>
+	:heavy_check_mark:However, his project is useful as a basic example of microservices.
+</p>
+
+<hr />
+
+## lease a Car Api
 
 This is a  simple microservices application which calculates the lease rate for a given car and customer.
 
@@ -8,7 +19,7 @@ I started developing this application as an assessment for a Job application. Be
 ### The application
 The application itself contains of four microservices (see drawing below). The lease-calculation-service calls the three other services in order to make a lease rate calcultion. The micro services called each have an in-memory H2 database with prefilled data to make the calculation possible. 
 
-*Drawing will be updated with naming server & load balancer*
+*Drawing will be updated with latest additions*
 
 ![drawing](https://github.com/hakktastic/lease-a-car-api/blob/main/Drawing.jpg) 
 
