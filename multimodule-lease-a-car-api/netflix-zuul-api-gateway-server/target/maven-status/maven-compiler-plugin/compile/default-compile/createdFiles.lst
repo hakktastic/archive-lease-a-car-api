@@ -1,0 +1,3 @@
+nl\svb\leaseacarapi\leasecalculationservice\filter\ZuulLoggingFilter.class
+nl\svb\leaseacarapi\leasecalculationservice\ServletInitializer.class
+nl\svb\leaseacarapi\leasecalculationservice\NetflixZuulApiGatewayServerApplication.class

@@ -1,0 +1,6 @@
+nl\svb\leaseacarapi\leasecalculationservice\config\SwaggerConfig.class
+nl\svb\leaseacarapi\leasecalculationservice\entity\Car.class
+nl\svb\leaseacarapi\leasecalculationservice\controller\CarController.class
+nl\svb\leaseacarapi\leasecalculationservice\ServletInitializer.class
+nl\svb\leaseacarapi\leasecalculationservice\CarServiceApplication.class
+nl\svb\leaseacarapi\leasecalculationservice\repository\CarRepository.class

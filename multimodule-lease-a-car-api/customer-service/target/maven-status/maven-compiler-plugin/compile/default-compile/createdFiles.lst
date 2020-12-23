@@ -1,0 +1,6 @@
+nl\svb\leaseacarapi\leasecalculationservice\config\SwaggerConfig.class
+nl\svb\leaseacarapi\leasecalculationservice\repository\CustomerRepository.class
+nl\svb\leaseacarapi\leasecalculationservice\controller\CustomerController.class
+nl\svb\leaseacarapi\leasecalculationservice\entity\Customer.class
+nl\svb\leaseacarapi\leasecalculationservice\ServletInitializer.class
+nl\svb\leaseacarapi\leasecalculationservice\CustomerServiceApplication.class
